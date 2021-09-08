@@ -39,8 +39,11 @@
     <el-table-column label="操作" width="280" align="center">
        <template slot-scope="scope">
           <el-button type="danger" size="mini" 
-                   icon="el-icon-delete" @click="removeDataById(scope.row.id)"> 
-          </el-button>
+                   icon="el-icon-delete" @click="removeDataById(scope.row.id)">删除</el-button>
+          <el-button v-if="scope.row.status==1" type="primary" size="mini" 
+                   icon="el-icon-delete" @click="lockHostSet(scope.row.id,0)">锁定</el-button>
+          <el-button v-if="scope.row.status==0" type="danger" size="mini" 
+                   icon="el-icon-delete" @click="lockHostSet(scope.row.id,1)">取消锁定</el-button>
        </template>
     </el-table-column>
     </el-table>
@@ -81,6 +84,18 @@ import { compile } from 'path-to-regexp'
                 this.getList()
             },
             methods:{//定义方法，进行请求接口调用
+
+            //锁定和取消锁定
+            lockHostSet(id,status){
+                hospset.lockHospSet(id,status)
+                .then(response => {
+                    //刷新
+                    this.getList()
+                })
+            },
+
+
+
             //获取选择复选框的id值
             handleSelectionChange(selection){
                 //console.log(selection)

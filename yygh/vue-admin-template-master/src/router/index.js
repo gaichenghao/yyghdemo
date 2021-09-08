@@ -39,9 +39,9 @@ export const constantRouterMap = [
 
  //医院设置的路由
  {
-  path: '/hostSet',
+  path: '/hospSet',
   component: Layout,
-  redirect: '/hostSet/list',
+  redirect: '/hospSet/list',
   name: '医院设置管理',
   meta: { title: '医院设置管理', icon: 'example' },
   children: [
@@ -99,18 +99,18 @@ export const constantRouterMap = [
     ]
   },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: 'Form', icon: 'form' }
+  //     }
+  //   ]
+  // },
 
  
 
