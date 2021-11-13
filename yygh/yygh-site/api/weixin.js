@@ -8,5 +8,19 @@ export default {
             url: `${api_name}/getLoginParam`,
             method: `get`
         })
+    },
+    //生成微信支付二维码
+    createNatice(orderId) {
+        return request({
+            url: `/api/order/weixin/createNative/${orderId}`,
+            method: `get`
+        })
+    },
+    //查询支付状态
+    queryPayStatus(orderId){
+        return request({
+            url : `api/order/weixin/queryPayStatus/${orderId}`,
+            method : 'get'
+        })
     }
 }
